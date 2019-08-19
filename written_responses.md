@@ -10,4 +10,4 @@ A blockchain establishes a standard or a condition that must be satisfied by the
 
 3. Explain how simulations like Conway's Game of Life can be used in real-world applications.
 
-
+Conway's Game of Life could be used in an ecological simulation, where the survival of a certain organism or group of organisms is modeled by the organisms surrounding it. For example, if the organism is in an overpopulated or underpopulated area, the Game of Life simulation could be programmed such that the organism dies in the next generation. Each successive generation could be subject to the conditions established by the generation before it, which could help with modeling how a population actually survives in the real world.
