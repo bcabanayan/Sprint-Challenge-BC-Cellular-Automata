@@ -4,6 +4,38 @@ def get_new_value(old_gen, old_automata):
     # TBC - add code to generate the next row of cells,
     # then replace the return statement below to
     # return the updated automata
+    start = old_gen * SQ_NUM 
+    end = start + SQ_NUM - 1
+    next_row = [0] * (SQ_NUM)
+    print(start, end)
+    if old_automata[start] == 1:
+        next_row[0] = 1
+    elif old_automata[start] == 0 and old_automata[start + 1] == 1:
+        next_row[0] = 1
+    else:
+        next_row[0] = 0
+    if old_automata[end] == 1:
+        next_row[-1] = 1
+    elif old_automata[end] == 0 and old_automata[end - 1] == 1:
+        next_row[-1] = 1
+    else:
+        next_row[-1] = 0
+    for i in range(start + 1, end):
+        if old_automata[i] == 1:
+            if old_automata[i - 1] == 1 and old_automata[i + 1] == 1:
+                next_row[i - ((old_gen + 1) * SQ_NUM)] = 0
+            elif old_automata[i - 1] == 1 or old_automata[i + 1] == 1:
+                next_row[i - ((old_gen + 1) * SQ_NUM)] = 1
+            elif old_automata[i - 1] == 0 and old_automata[i + 1] == 0:
+                next_row[i - ((old_gen + 1) * SQ_NUM)] = 1
+        if old_automata[i] == 0:
+            if old_automata[i - 1] == 1 and old_automata[i + 1] == 1:
+                next_row[i - ((old_gen + 1) * SQ_NUM)] = 1
+            elif old_automata[i - 1] == 1 or old_automata[i + 1] == 1:
+                next_row[i - ((old_gen + 1) * SQ_NUM)] = 1
+            elif old_automata[i - 1] == 0 and old_automata[i + 1] == 0:
+                next_row[i - ((old_gen + 1) * SQ_NUM)] = 0
+    old_automata[(start + SQ_NUM):(end + SQ_NUM)] = next_row
     return old_automata
 
 # Define some colors and other constants
